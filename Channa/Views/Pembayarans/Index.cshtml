@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Channa.Models.Pembayaran>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Home Channa</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("IdTransaksi")
+            </th>
+            <th>
+                @Html.DisplayName("IdPenjual")
+            </th>
+            <th>
+                @Html.DisplayName("TotalPembayaran")
+            </th>
+            <th>
+                @Html.DisplayName("TanggalPembayaran")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTransaksi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPenjual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPembayaran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanggalPembayaran)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPembayaran"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdPembayaran"><i class="fas fa-list"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPembayaran"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
